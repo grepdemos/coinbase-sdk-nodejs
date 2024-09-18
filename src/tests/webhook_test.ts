@@ -8,6 +8,10 @@ describe("Webhook", () => {
     network_id: "test-network",
     notification_uri: "https://example.com/callback",
     event_type: "erc20_transfer",
+    event_type_filter: {
+      addresses: ["0xa55C5950F7A3C42Fa5799B2Cac0e455774a07382"],
+      wallet_id: "w1",
+    },
     event_filters: [{ contract_address: "0x...", from_address: "0x...", to_address: "0x..." }],
     signature_header: "example_header",
   };
@@ -149,6 +153,7 @@ describe("Webhook", () => {
         networkId: "test-network",
         notificationUri: "https://example.com/callback",
         eventType: "erc20_transfer",
+        eventTypeFilter: { addresses: ["0x1..", "0x2.."] },
         eventFilters: [{ contract_address: "0x...", from_address: "0x...", to_address: "0x..." }],
         signatureHeader: "example_header",
       });
@@ -157,6 +162,7 @@ describe("Webhook", () => {
         network_id: "test-network",
         notification_uri: "https://example.com/callback",
         event_type: "erc20_transfer",
+        event_type_filter: { addresses: ["0x1..", "0x2.."] },
         event_filters: [{ contract_address: "0x...", from_address: "0x...", to_address: "0x..." }],
         signature_header: "example_header",
       });
@@ -242,7 +248,7 @@ describe("Webhook", () => {
       const webhook = Webhook.init(mockModel);
       const stringRepresentation = webhook.toString();
       expect(stringRepresentation).toBe(
-        `Webhook { id: 'test-id', networkId: 'test-network', eventType: 'erc20_transfer', eventFilter: [{"contract_address":"0x...","from_address":"0x...","to_address":"0x..."}], notificationUri: 'https://example.com/callback', signatureHeader: 'example_header' }`,
+        `Webhook { id: 'test-id', networkId: 'test-network', eventType: 'erc20_transfer', eventFilter: [{"contract_address":"0x...","from_address":"0x...","to_address":"0x..."}], eventTypeFilter: {"addresses":["0xa55C5950F7A3C42Fa5799B2Cac0e455774a07382"],"wallet_id":"w1"}, notificationUri: 'https://example.com/callback', signatureHeader: 'example_header' }`,
       );
     });
   });

@@ -48,6 +48,7 @@ import {
   CreateContractInvocationRequest,
   ContractInvocationList,
   ContractInvocation as ContractInvocationModel,
+  WebhookEventTypeFilter,
   SmartContractList,
   CreateSmartContractRequest,
   SmartContract as SmartContractModel,
@@ -1157,6 +1158,7 @@ export type CreateWebhookOptions = {
   networkId: string;
   notificationUri: string;
   eventType: WebhookEventType;
+  eventTypeFilter?: WebhookEventTypeFilter;
   eventFilters?: Array<WebhookEventFilter>;
   signatureHeader?: string;
 };
